@@ -1,0 +1,28 @@
+name: Deploy to VM via SSH
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+     steps:
+     - name: checkpoint repository
+       uses: actions/checkout@v4
+
+    - name: Deploy via SSH
+      uses: appleboy//ssh-action@v0.1.6
+      with:
+        host: ${{ secrects.SERVER_IP }}
+        username: ${{ secrects.SERVER_USER }}
+        key: ${{ secrects.SERVER_SSH_KEY }}
+        script: |
+          cd ˜/app
+          git pul
+          docker build -t flask-api .
+          docker stop flask-api || true
+          docker rm flask-api || true
+          docker run -d -p 80:80 --name flask-api flask-api
