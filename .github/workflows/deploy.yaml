@@ -16,9 +16,9 @@ jobs:
     - name: Deploy via SSH
       uses: appleboy//ssh-action@v0.1.6
       with:
-        host: ${{ secrects.SERVER_IP }}
-        username: ${{ secrects.SERVER_USER }}
-        key: ${{ secrects.SERVER_SSH_KEY }}
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
         script: |
           cd ˜/app
           git pul
