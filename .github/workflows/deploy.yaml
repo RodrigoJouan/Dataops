@@ -9,9 +9,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
 
-     steps:
-     - name: checkpoint repository
-       uses: actions/checkout@v4
+    steps:
+    - name: checkpoint repository
+      uses: actions/checkout@v4
 
     - name: Deploy via SSH
       uses: appleboy//ssh-action@v0.1.6
