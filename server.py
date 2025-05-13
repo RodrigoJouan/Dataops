@@ -15,13 +15,12 @@ operator_model = operator_ns.model('BinaryOperator', {
 @operator_ns.route('/')
 @operator_ns.doc(description='Health check')
 class HealthCheck(Resource):
-        def get(self):
-            return {'message': 'I am alive'}
+    def get(self):
+        return {'message': 'I am alive'}
 
 @operator_ns.route('/soma')
 @operator_ns.doc(description='Soma dois números')
 class Soma(Resource):
-
     def post(self):
         a = api.payload['a']
         b = api.payload['b']
@@ -29,8 +28,7 @@ class Soma(Resource):
 
 @operator_ns.route('/multiplicacao')
 @operator_ns.doc(description='Multiplica dois números')
-
-
+class Multiplicacao(Resource):
     def post(self):
         a = api.payload['a']
         b = api.payload['b']
